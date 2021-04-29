@@ -1,0 +1,145 @@
+.App {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.card-horizontal {
+  display: flex;
+  padding-bottom: 170px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.piechart {
+  height: 250px;
+
+  padding-bottom: 50px;
+  padding-top: 10px;
+  font-size: 5px;
+}
+
+.piechartDetails {
+  height: 350px;
+
+  padding-bottom: 50px;
+  padding-top: 10px;
+  font-size: 5px;
+  margin-bottom: 10px;
+}
+
+.calories {
+  color: darkblue;
+}
+
+.protein {
+  color: dodgerblue;
+}
+
+.carbs {
+  color: red;
+}
+
+.fats {
+  color: orange;
+}
+
+.button {
+  font-weight: bolder;
+}
+
+.span {
+  font-weight: bolder;
+}
+
+.spanlight {
+  font-weight: bold;
+}
+
+.nav {
+  display: flex;
+  padding-top: 0px;
+  padding-left: 800px;
+}
+
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: thistle;
+  padding: 20px;
+}
+
+.homeImage {
+  display: flex;
+  align-items: center;
+  height: 600px;
+  padding-bottom: 250px;
+  margin-top: -250px;
+}
+
+.headerImage {
+  display: flex;
+  height: 150px;
+}
+
+.homeHeading {
+  display: flex;
+  margin-top: -300px;
+  font-family: "Lucida Console";
+  color: black;
+}
+
+.detailsImage {
+  display: flex;
+  height: 250px;
+  width: 900px;
+}
+
+.navBarLink {
+  margin: 10px;
+}
+
+.mealsHeading {
+  color: black;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+}
