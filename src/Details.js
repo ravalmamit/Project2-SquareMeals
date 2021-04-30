@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import Card from "react-bootstrap/Card";
 import { PieChart, Pie } from "react-minimal-pie-chart";
-import imgUrl from "./images/mcdonalds.png";
-import imgUrl2 from "./images/chipotle.gif";
-import imgUrl3 from "./images/pizza.jpeg";
-import imgUrl4 from "./images/wendy.png";
-import imgUrl5 from "./images/chickfil.png";
-import imgUrl6 from "./images/taco.jpg";
+import imgUrl from "./images/mcdonalds.svg";
+import imgUrl2 from "./images/chipotle.svg";
+import imgUrl3 from "./images/pizza.svg";
+import imgUrl4 from "./images/wendy.svg";
+import imgUrl5 from "./images/chickfil.svg";
+import imgUrl6 from "./images/taco.svg";
 
 import App from "./App";
 
@@ -124,7 +124,7 @@ function Details(props) {
       style={{
         backgroundImage: `url(${imgUrl}),url(${imgUrl2}), url(${imgUrl3}), url(${imgUrl4}), url(${imgUrl5}), url(${imgUrl6})`,
         backgroundSize:
-          "50px 80px, 120px 80px, 110px 80px, 90px 80px, 110px 100px, 80px 80px",
+          "50px 80px, 120px 90px, 110px 80px, 90px 80px, 110px 100px, 80px 80px",
         backgroundPosition:
           "top left, top right, bottom left, bottom right, center left, center right",
 
