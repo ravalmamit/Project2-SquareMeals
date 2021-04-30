@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 import { PieChart, Pie } from "react-minimal-pie-chart";
 import Details from "./Details";
 import { Link } from "react-router-dom";
+
 import App from "./App";
 
 function Meal1(props) {
@@ -15,6 +16,7 @@ function Meal1(props) {
   const [macrosE, setMacrosE] = useState("");
   const [macrosC, setMacrosC] = useState("");
   const [macrosF, setMacrosF] = useState("");
+
   let proteinTotal, energyTotal, carbTotal, fatTotal;
 
   // //// Totalmacros code
@@ -56,13 +58,15 @@ function Meal1(props) {
   }
 
   function addMacros() {
-    // macros.Protein += foodProtein[0].value;
     let space = " ";
-
-    setMacrosP(macrosP.concat(foodProtein[0].value, space));
-    setMacrosE(macrosE.concat(foodEnergy[0].value, space));
-    setMacrosC(macrosC.concat(foodCarb[0].value, space));
-    setMacrosF(macrosF.concat(foodFat[0].value, space));
+    if (foodProtein[0] !== undefined)
+      setMacrosP(macrosP.concat(foodProtein[0].value, space));
+    if (foodEnergy[0] !== undefined)
+      setMacrosE(macrosE.concat(foodEnergy[0].value, space));
+    if (foodCarb[0] !== undefined)
+      setMacrosC(macrosC.concat(foodCarb[0].value, space));
+    if (foodFat[0] !== undefined)
+      setMacrosF(macrosF.concat(foodFat[0].value, space));
     // setMacros(macros.Protein);
   }
 
@@ -115,6 +119,8 @@ function Meal1(props) {
     return fatTotal;
   }
 
+  console.log(`food energy ${foodEnergy[0]}`);
+
   return (
     <div>
       <div className="piechart">
@@ -158,19 +164,28 @@ function Meal1(props) {
           onChange={handleChange}
         />
       </section>
-      <button onClick={getMacros}>Search</button>
+      <button className="button" onClick={getMacros}>
+        Search
+      </button>
       {/* <p> */}
       <div>
         The macros for <span className="span"> {food} </span>:
       </div>
+
       <div>
-        <div className="calories">Calories: {foodEnergy[0].value}</div>
+        <div className="calories">
+          Calories: {foodEnergy[0] === undefined ? "" : foodEnergy[0].value}
+        </div>
 
-        <div className="protein">Protein: {foodProtein[0].value}</div>
-
-        <div className="carbs"> Carbs: {foodCarb[0].value}</div>
-
-        <div className="fats">Fats: {foodFat[0].value}</div>
+        <div className="protein">
+          Protein: {foodProtein[0] === undefined ? "" : foodProtein[0].value}
+        </div>
+        <div className="carbs">
+          Carbs: {foodCarb[0] === undefined ? "" : foodCarb[0].value}
+        </div>
+        <div className="fats">
+          Fats: {foodFat[0] === undefined ? "" : foodFat[0].value}
+        </div>
       </div>
       {/* </p> */}
       <button className="button" onClick={addMacros}>
@@ -179,6 +194,7 @@ function Meal1(props) {
       {/* <p></p> */}
 
       {/* <button onClick={totalProteinMeal1}>Total Macros</button> */}
+
       <div>
         <div>Total Macros for Meal1:</div>
         <div className="calories">Calories:{totalEnergyMeal()} </div>

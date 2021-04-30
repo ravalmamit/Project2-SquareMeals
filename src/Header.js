@@ -18,7 +18,9 @@ function Header(props) {
         <Link className="navBarLink" to="/meal">
           Meals
         </Link>
-        <Link to="/details">Fast Foods</Link>
+        <Link className="navBarLink" to="/details">
+          Fast Foods
+        </Link>
       </nav>
     </header>
   );
