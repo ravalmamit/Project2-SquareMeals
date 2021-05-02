@@ -9,20 +9,19 @@ function Meal2(props) {
   const [foodCarb, setFoodCarb] = useState([0.0]);
   const [foodFat, setFoodFat] = useState([0.0]);
   const [food, setFood] = useState("");
+  const [food2, setFood2] = useState("");
   const [macrosP, setMacrosP] = useState("");
   const [macrosE, setMacrosE] = useState("");
   const [macrosC, setMacrosC] = useState("");
   const [macrosF, setMacrosF] = useState("");
   let proteinTotal, energyTotal, carbTotal, fatTotal;
 
-  // //// Totalmacros code
-  // const [dataMeal1, setDataMeal1] = useState("");
-
   function getMacros() {
     const key = "bMSaP0axexn3bqcdaBe96ybvtw2lDwu6hqEfgksd";
     const query = food;
     const dataType = `Foundation`;
     const apiURL = `https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${key}&query=${food}&dataType=${dataType}&pageNumber=1&pageSize=5`;
+    setFood2(food);
     fetch(apiURL)
       .then((res) => res.json())
       .then((data) => {
@@ -46,6 +45,7 @@ function Meal2(props) {
             (item) => item.nutrientNumber === "204"
           )
         );
+        setFood("");
       })
 
       .catch(() => {
@@ -63,7 +63,6 @@ function Meal2(props) {
       setMacrosC(macrosC.concat(foodCarb[0].value, space));
     if (foodFat[0] !== undefined)
       setMacrosF(macrosF.concat(foodFat[0].value, space));
-    // setMacros(macros.Protein);
   }
 
   function handleChange(e) {
@@ -154,6 +153,7 @@ function Meal2(props) {
           type="text"
           name="foodname"
           onChange={handleChange}
+          value={food}
         />
       </section>
       <button className="button" onClick={getMacros}>
@@ -161,7 +161,7 @@ function Meal2(props) {
       </button>
       {/* <p> */}
       <div>
-        The macros for <span className="span">{food}</span>:
+        The macros for <span className="span">{food2}</span>:
       </div>
       <div className="calories">
         Calories: {foodEnergy[0] === undefined ? "" : foodEnergy[0].value}
@@ -175,12 +175,11 @@ function Meal2(props) {
       <div className="fats">
         Fats: {foodFat[0] === undefined ? "" : foodFat[0].value}
       </div>
-      {/* </p> */}
+
       <button className="button" onClick={addMacros}>
         +Meal2
       </button>
-      {/* <p></p> */}
-      {/* <button onClick={totalProteinMeal1}>Total Macros</button> */}
+
       <div>
         <div>Total Macros for Meal2:</div>
         <div className="calories">Calories:{totalEnergyMeal()} </div>

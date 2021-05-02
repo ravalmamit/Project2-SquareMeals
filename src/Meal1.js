@@ -3,7 +3,6 @@ import Card from "react-bootstrap/Card";
 import { PieChart, Pie } from "react-minimal-pie-chart";
 import Details from "./Details";
 import { Link } from "react-router-dom";
-
 import App from "./App";
 
 function Meal1(props) {
@@ -12,21 +11,20 @@ function Meal1(props) {
   const [foodCarb, setFoodCarb] = useState([0.0]);
   const [foodFat, setFoodFat] = useState([0.0]);
   const [food, setFood] = useState("");
+  const [food2, setFood2] = useState("");
   const [macrosP, setMacrosP] = useState("");
   const [macrosE, setMacrosE] = useState("");
   const [macrosC, setMacrosC] = useState("");
   const [macrosF, setMacrosF] = useState("");
-
   let proteinTotal, energyTotal, carbTotal, fatTotal;
-
-  // //// Totalmacros code
-  // const [dataMeal1, setDataMeal1] = useState("");
 
   function getMacros() {
     const key = "bMSaP0axexn3bqcdaBe96ybvtw2lDwu6hqEfgksd";
     const query = food;
     const dataType = `Foundation`;
     const apiURL = `https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${key}&query=${food}&dataType=${dataType}&pageNumber=1&pageSize=5`;
+    setFood2(food);
+
     fetch(apiURL)
       .then((res) => res.json())
       .then((data) => {
@@ -50,6 +48,7 @@ function Meal1(props) {
             (item) => item.nutrientNumber === "204"
           )
         );
+        setFood("");
       })
 
       .catch(() => {
@@ -72,7 +71,6 @@ function Meal1(props) {
 
   function handleChange(e) {
     setFood(e.target.value);
-    console.log(food);
   }
 
   function totalProteinMeal() {
@@ -119,8 +117,6 @@ function Meal1(props) {
     return fatTotal;
   }
 
-  console.log(`food energy ${foodEnergy[0]}`);
-
   return (
     <div>
       <div className="piechart">
@@ -162,6 +158,7 @@ function Meal1(props) {
           type="text"
           name="foodname"
           onChange={handleChange}
+          value={food}
         />
       </section>
       <button className="button" onClick={getMacros}>
@@ -169,7 +166,7 @@ function Meal1(props) {
       </button>
       {/* <p> */}
       <div>
-        The macros for <span className="span"> {food} </span>:
+        The macros for <span className="span"> {food2} </span>:
       </div>
 
       <div>
@@ -203,7 +200,6 @@ function Meal1(props) {
         <div className="fats">Fats:{totalFatMeal()} </div>
       </div>
 
-      {/* <Link to={`/details/${food}`}>Learn more about: {food} </Link> */}
       <main></main>
     </div>
   );

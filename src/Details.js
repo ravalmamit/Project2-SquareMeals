@@ -18,6 +18,7 @@ function Details(props) {
   const [foodCarb, setFoodCarb] = useState([0.0]);
   const [foodFat, setFoodFat] = useState([0.0]);
   const [food, setFood] = useState("");
+  const [food2, setFood2] = useState("");
   const [macrosP, setMacrosP] = useState("");
   const [macrosE, setMacrosE] = useState("");
   const [macrosC, setMacrosC] = useState("");
@@ -29,6 +30,7 @@ function Details(props) {
     const query = food;
     const dataType = `SR Legacy`;
     const apiURL = `https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${key}&query=${food}&dataType=${dataType}&pageNumber=1&pageSize=5`;
+    setFood2(food);
     fetch(apiURL)
       .then((res) => res.json())
       .then((data) => {
@@ -52,6 +54,7 @@ function Details(props) {
             (item) => item.nutrientNumber === "204"
           )
         );
+        setFood("");
       })
 
       .catch(() => {
@@ -74,7 +77,6 @@ function Details(props) {
 
   function handleChange(e) {
     setFood(e.target.value);
-    console.log(food);
   }
 
   function totalProteinMeal() {
@@ -175,6 +177,7 @@ function Details(props) {
             type="text"
             name="foodname"
             onChange={handleChange}
+            value={food}
           />
         </section>
         <button className="button" onClick={getMacros}>
@@ -182,7 +185,7 @@ function Details(props) {
         </button>
         {/* <p> */}
         <div>
-          The macros for <span className="span"> {food} </span>:
+          The macros for <span className="span"> {food2} </span>:
         </div>
         <div className="calories">
           Calories: {foodEnergy[0] === undefined ? "" : foodEnergy[0].value}
