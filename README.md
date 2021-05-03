@@ -35,3 +35,7 @@ Welcome to Square Meals App. It's a nutrition app that gives you macro nutrition
 ### Wireframes
 
 ![](src/images/project2_wireframes.png)
+
+### React Components
+
+![](src/images/square_meals_4.png)
